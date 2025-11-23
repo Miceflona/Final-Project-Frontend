@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Espresso Classico",
       "category": "coffee",
       "price": 18000,
@@ -9,7 +9,7 @@
       "image": "https://vinut.com.vn/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2023/12/how-to-make-a-macchiato-the-classic-way-6572e3d759e13.jpeg.webp"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Vanilla Latte",
       "category": "coffee",
       "price": 25000,
@@ -17,7 +17,7 @@
       "image": "https://www.forkinthekitchen.com/wp-content/uploads/2022/08/220629.iced_.latte_.vanilla-9009-600x600.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Matcha Zen Latte",
       "category": "non-coffee",
       "price": 22000,
@@ -25,12 +25,20 @@
       "image": "https://soyomatcha.com/cdn/shop/articles/15.png?v=1721855982"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Oreo shake",
       "category": "non-coffee",
       "price": 25000,
       "image": "https://d1r9hss9q19p18.cloudfront.net/uploads/2017/04/t-mcdonalds-McFlurry-with-OREO-Cookies-12floz-cup.png",
       "description": "Perpaduan antara Fresh milk dan crumbs dari oreo yang buat minuman anda menjadi menarik"
+    },
+    {
+      "id": "dfa3",
+      "name": "Amole",
+      "price": 20000,
+      "category": "coffee",
+      "image": "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/p1/587/2025/09/20/210925_CMS-1_kreasi-americano-tak-melulu-lemon-930469998.jpg",
+      "description": "Perpaduan antara kopi murni dan asam dari lemon membuat segar"
     }
   ]
 }
