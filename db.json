@@ -1,0 +1,76 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Aren Latte",
+      "category": "Coffee",
+      "price": 18000,
+      "type": "Cold",
+      "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=300&h=300"
+    },
+    {
+      "id": "2",
+      "name": "Americano",
+      "category": "Coffee",
+      "price": 15000,
+      "type": "Hot",
+      "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=300&h=300"
+    },
+    {
+      "id": "3",
+      "name": "Matcha Fusion",
+      "category": "Non-Coffee",
+      "price": 22000,
+      "type": "Cold",
+      "image": "https://images.unsplash.com/photo-1515825838458-f2a94b20105a?auto=format&fit=crop&q=80&w=300&h=300"
+    },
+    {
+      "id": "4",
+      "name": "Red Velvet",
+      "category": "Non-Coffee",
+      "price": 20000,
+      "type": "Cold",
+      "image": "https://images.unsplash.com/photo-1616486338812-3dadae4b4f9d?auto=format&fit=crop&q=80&w=300&h=300"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "userId": 1,
+      "productId": 1,
+      "name": "Aren Latte",
+      "price": 18000,
+      "image": "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=300&h=300",
+      "qty": 2
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "buyer": {
+        "name": "John Doe",
+        "address": "Jl. Example No 123, Jakarta",
+        "phone": "08123456789"
+      },
+      "items": [
+        {
+          "productId": 1,
+          "name": "Aren Latte",
+          "price": 18000,
+          "qty": 2
+        }
+      ],
+      "totalAmount": 36000,
+      "orderDate": "2023-08-30T12:00:00Z",
+      "status": "Pending"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com"
+    }
+  ]
+}
