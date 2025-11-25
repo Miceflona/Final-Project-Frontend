@@ -90,33 +90,37 @@ export default function DetailProduct() {
   }
 
   const totalPrice = product.price * quantity;
+  const isSeller = user?.role === 'seller';
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20 pb-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-amber-50 pt-20 pb-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Breadcrumb */}
-        <Link to="/catalogue" className="text-[#8B4513] hover:underline mb-6 inline-flex items-center gap-2 font-semibold">
-          ← Kembali ke Katalog
+        <Link to="/catalogue" className="text-[#8B4513] hover:text-orange-700 mb-8 inline-flex items-center gap-2 font-bold text-lg group">
+          <span className="transform group-hover:-translate-x-1 transition-transform">←</span> Kembali ke Katalog
         </Link>
 
         {/* Product Detail */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 md:p-8">
+        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 md:p-10">
             
             {/* Product Image */}
             <div>
-              <img
-                src={product.image || 'https://via.placeholder.com/400?text=Product+Image'}
-                alt={product.name}
-                className="w-full h-96 object-cover rounded-lg shadow-md"
-                onError={(e) => { e.target.src = 'https://via.placeholder.com/400?text=Image+Error'; }}
-              />
-              <div className="mt-4 flex gap-2">
-                <span className={`px-4 py-2 rounded-full font-semibold text-sm ${
+              <div className="relative overflow-hidden rounded-2xl shadow-lg group">
+                <img
+                  src={product.image || 'https://via.placeholder.com/400?text=Product+Image'}
+                  alt={product.name}
+                  className="w-full h-96 object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => { e.target.src = 'https://via.placeholder.com/400?text=Image+Error'; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              </div>
+              <div className="mt-6 flex gap-3">
+                <span className={`px-5 py-2.5 rounded-full font-bold text-sm shadow-lg ${
                   product.category === 'coffee' 
-                    ? 'bg-amber-100 text-amber-800' 
-                    : 'bg-green-100 text-green-800'
+                    ? 'bg-gradient-to-r from-amber-400 to-orange-500 text-white' 
+                    : 'bg-gradient-to-r from-green-400 to-emerald-500 text-white'
                 }`}>
                   {product.category === 'coffee' ? '☕ Kopi' : '🥤 Non-Kopi'}
                 </span>
@@ -126,20 +130,20 @@ export default function DetailProduct() {
             {/* Product Info */}
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-4xl font-bold text-[#8B4513] mb-2">{product.name}</h1>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-orange-600">{formatRupiah(product.price)}</span>
+                <h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#8B4513] to-orange-700 mb-3">{product.name}</h1>
+                <div className="flex items-baseline gap-2 mb-6">
+                  <span className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">{formatRupiah(product.price)}</span>
                 </div>
 
-                <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                  <h3 className="font-semibold text-gray-700 mb-2">Deskripsi:</h3>
-                  <p className="text-gray-600 leading-relaxed">{product.description}</p>
+                <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-6 rounded-xl mb-6 border border-orange-200 shadow-inner">
+                  <h3 className="font-bold text-gray-800 mb-3 text-lg">📝 Deskripsi:</h3>
+                  <p className="text-gray-700 leading-relaxed">{product.description}</p>
                 </div>
 
                 {/* Rating/Review section placeholder */}
-                <div className="mb-6">
-                  <p className="text-sm text-gray-600">
-                    ⭐ <span className="font-semibold">4.8</span> · <span className="text-gray-500">125 ulasan</span>
+                <div className="mb-6 bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                  <p className="text-sm text-gray-700">
+                    ⭐⭐⭐⭐⭐ <span className="font-bold text-yellow-600">4.8</span> · <span className="text-gray-600">125 ulasan pelanggan</span>
                   </p>
                 </div>
               </div>
@@ -149,52 +153,57 @@ export default function DetailProduct() {
                 {!user ? (
                   <Link
                     to="/login"
-                    className="w-full bg-gray-400 text-white py-4 rounded-lg font-semibold text-center hover:bg-gray-500 transition block mb-3"
+                    className="w-full bg-gradient-to-r from-gray-500 to-gray-600 text-white py-4 rounded-xl font-bold text-center hover:from-gray-600 hover:to-gray-700 transform hover:scale-105 transition-all duration-200 block mb-3 shadow-lg"
                   >
-                    Login untuk Membeli
+                    🔐 Login untuk Membeli
                   </Link>
+                ) : isSeller ? (
+                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-6 rounded-xl text-center shadow-lg">
+                    <p className="text-2xl font-bold mb-2">👁️ Mode Penjual</p>
+                    <p className="text-sm opacity-90">Anda sedang melihat produk ini sebagai penjual</p>
+                  </div>
                 ) : (
                   <>
-                    <div className="mb-4">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Jumlah:</label>
-                      <div className="flex items-center gap-3 border-2 border-gray-300 rounded-lg w-fit p-2">
+                    <div className="mb-6">
+                      <label className="block text-sm font-bold text-gray-800 mb-3">📦 Jumlah:</label>
+                      <div className="flex items-center gap-4 bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-300 rounded-xl w-fit p-3 shadow-md">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="text-xl font-bold text-gray-600 hover:text-gray-800 px-2"
+                          className="text-2xl font-bold text-orange-600 hover:text-orange-800 hover:bg-white rounded-lg px-3 py-1 transition-all"
                         >
                           −
                         </button>
-                        <span className="font-bold text-lg px-4 py-1">{quantity}</span>
+                        <span className="font-bold text-2xl px-6 py-1 text-gray-800">{quantity}</span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="text-xl font-bold text-gray-600 hover:text-gray-800 px-2"
+                          className="text-2xl font-bold text-orange-600 hover:text-orange-800 hover:bg-white rounded-lg px-3 py-1 transition-all"
                         >
                           +
                         </button>
                       </div>
                     </div>
 
-                    <div className="bg-orange-50 p-4 rounded-lg mb-4">
-                      <p className="text-sm text-gray-600">Total Harga:</p>
-                      <p className="text-2xl font-bold text-orange-600">{formatRupiah(totalPrice)}</p>
+                    <div className="bg-gradient-to-br from-orange-100 via-orange-50 to-yellow-50 p-6 rounded-xl mb-6 border-2 border-orange-300 shadow-lg">
+                      <p className="text-sm text-gray-600 font-semibold">💰 Total Harga:</p>
+                      <p className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">{formatRupiah(totalPrice)}</p>
                     </div>
 
                     <button
                       onClick={handleAddToCart}
                       disabled={addingToCart}
-                      className="w-full bg-orange-600 text-white py-4 rounded-lg font-semibold hover:bg-orange-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed mb-3"
+                      className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-xl font-bold text-lg hover:from-orange-700 hover:to-red-700 transform hover:scale-105 transition-all duration-200 disabled:from-gray-400 disabled:to-gray-400 disabled:cursor-not-allowed disabled:transform-none mb-3 shadow-xl"
                     >
-                      {addingToCart ? 'Menambahkan...' : '🛒 Tambah ke Keranjang'}
+                      {addingToCart ? '⏳ Menambahkan...' : '🛒 Tambah ke Keranjang'}
                     </button>
 
                     {message && (
-                      <p className={`text-center text-sm p-2 rounded ${
+                      <div className={`text-center text-sm p-3 rounded-lg font-bold animate-pulse shadow-md ${
                         message.includes('Gagal') 
-                          ? 'bg-red-100 text-red-600' 
-                          : 'bg-green-100 text-green-600'
+                          ? 'bg-red-100 text-red-700 border border-red-300' 
+                          : 'bg-green-100 text-green-700 border border-green-300'
                       }`}>
                         {message}
-                      </p>
+                      </div>
                     )}
                   </>
                 )}
@@ -204,18 +213,21 @@ export default function DetailProduct() {
         </div>
 
         {/* Additional Info */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-semibold text-[#8B4513] mb-2">✓ Kualitas Premium</h3>
-            <p className="text-sm text-gray-600">Biji kopi pilihan dari petani terbaik</p>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-gradient-to-br from-white to-orange-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-orange-100">
+            <div className="text-4xl mb-4">✨</div>
+            <h3 className="font-bold text-[#8B4513] mb-3 text-lg">Kualitas Premium</h3>
+            <p className="text-sm text-gray-600">Biji kopi pilihan dari petani terbaik Indonesia</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-semibold text-[#8B4513] mb-2">⚡ Pengiriman Cepat</h3>
-            <p className="text-sm text-gray-600">Dikirim dalam waktu 30 menit</p>
+          <div className="bg-gradient-to-br from-white to-blue-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-blue-100">
+            <div className="text-4xl mb-4">⚡</div>
+            <h3 className="font-bold text-[#8B4513] mb-3 text-lg">Pengiriman Cepat</h3>
+            <p className="text-sm text-gray-600">Pesanan Anda tiba dalam waktu 30 menit</p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="font-semibold text-[#8B4513] mb-2">💳 Pembayaran Aman</h3>
-            <p className="text-sm text-gray-600">Berbagai metode pembayaran tersedia</p>
+          <div className="bg-gradient-to-br from-white to-green-50 p-8 rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-green-100">
+            <div className="text-4xl mb-4">💳</div>
+            <h3 className="font-bold text-[#8B4513] mb-3 text-lg">Pembayaran Aman</h3>
+            <p className="text-sm text-gray-600">Berbagai metode pembayaran terpercaya</p>
           </div>
         </div>
       </div>

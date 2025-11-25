@@ -12,9 +12,16 @@ const CartPage = () => {
   const navigate = useNavigate();
   const [cartDetails, setCartDetails] = useState([]);
 
+  // Redirect penjual ke halaman produk mereka
+  useEffect(() => {
+    if (user?.role === 'seller') {
+      navigate('/seller/myproducts');
+    }
+  }, [user, navigate]);
+
   // Fetch cart items saat component mount
   useEffect(() => {
-    if (user) {
+    if (user && user.role !== 'seller') {
       fetchCart(user.id);
     }
   }, [user]);

@@ -18,6 +18,9 @@ const Navbar = () => {
     return location.pathname === path ? "text-orange-400 font-bold" : "text-white hover:text-orange-200 transition";
   };
 
+  // Check if current page is login or register
+  const isAuthPage = location.pathname === '/login' || location.pathname === '/register';
+
   const closeAllMenus = () => {
     setIsMobileMenuOpen(false);
     setIsProfileOpen(false);
@@ -38,10 +41,14 @@ const Navbar = () => {
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className={isActive('/')}>Home</Link>
-          <Link to="/catalogue" className={isActive('/catalogue')}>Catalogue</Link>
+          {!isAuthPage && (
+            <>
+              <Link to="/" className={isActive('/')}>Home</Link>
+              <Link to="/catalogue" className={isActive('/catalogue')}>Catalogue</Link>
+            </>
+          )}
           
-          {user && (
+          {user && user.role !== 'seller' && (
             <Link to="/cart" className={`relative ${isActive('/cart')}`}>
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -70,9 +77,11 @@ const Navbar = () => {
                   <Link to="/profile" onClick={closeAllMenus} className="block px-4 py-2 hover:bg-orange-50 hover:text-[#8B4513] font-medium">
                     👤 Profil Saya
                   </Link>
-                  <Link to="/my-orders" onClick={closeAllMenus} className="block px-4 py-2 hover:bg-orange-50 hover:text-[#8B4513] font-medium">
-                    📦 Pesanan Saya
-                  </Link>
+                  {user.role !== 'seller' && (
+                    <Link to="/my-orders" onClick={closeAllMenus} className="block px-4 py-2 hover:bg-orange-50 hover:text-[#8B4513] font-medium">
+                      📦 Pesanan Saya
+                    </Link>
+                  )}
                   {user.role === 'seller' && (
                     <Link to="/seller" onClick={closeAllMenus} className="block px-4 py-2 hover:bg-orange-50 hover:text-[#8B4513] font-medium">
                       🏪 Dashboard Penjual
@@ -97,7 +106,7 @@ const Navbar = () => {
 
         {/* MOBILE HAMBURGER BUTTON & ICONS */}
         <div className="md:hidden flex items-center space-x-4">
-          {user && (
+          {user && user.role !== 'seller' && (
             <Link to="/cart" onClick={() => setIsMobileMenuOpen(false)} className="relative text-white">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -120,8 +129,12 @@ const Navbar = () => {
       {/* MOBILE MENU DROPDOWN */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-[#4a250a] border-t border-orange-900/30 px-6 py-4 space-y-4 shadow-xl">
-          <Link to="/" onClick={closeAllMenus} className="block text-white hover:text-orange-400 font-medium">Home</Link>
-          <Link to="/catalogue" onClick={closeAllMenus} className="block text-white hover:text-orange-400 font-medium">Catalogue</Link>
+          {!isAuthPage && (
+            <>
+              <Link to="/" onClick={closeAllMenus} className="block text-white hover:text-orange-400 font-medium">Home</Link>
+              <Link to="/catalogue" onClick={closeAllMenus} className="block text-white hover:text-orange-400 font-medium">Catalogue</Link>
+            </>
+          )}
           
           {user ? (
             <div className="border-t border-white/20 pt-4 mt-2">
@@ -133,7 +146,9 @@ const Navbar = () => {
                 </div>
               </div>
               <Link to="/profile" onClick={closeAllMenus} className="block text-white font-semibold py-2 hover:text-orange-300">👤 Profil</Link>
-              <Link to="/my-orders" onClick={closeAllMenus} className="block text-white font-semibold py-2 hover:text-orange-300">📦 Pesanan</Link>
+              {user.role !== 'seller' && (
+                <Link to="/my-orders" onClick={closeAllMenus} className="block text-white font-semibold py-2 hover:text-orange-300">📦 Pesanan</Link>
+              )}
               {user.role === 'seller' && (
                 <Link to="/seller" onClick={closeAllMenus} className="block text-white font-semibold py-2 hover:text-orange-300">🏪 Dashboard</Link>
               )}
