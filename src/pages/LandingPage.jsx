@@ -23,11 +23,10 @@ const LandingPage = () => {
             <>
               <h1 className="text-5xl md:text-7xl font-extrabold mb-6 animate-fade-in">
                 Selamat Datang, <br /> 
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Penjual AM-PM!</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Di Website AM-PM!</span>
               </h1>
               <p className="text-xl md:text-2xl mb-10 max-w-2xl leading-relaxed">
-                Kelola produk Anda dengan mudah. Tambahkan produk baru, edit informasi, 
-                dan pantau penjualan Anda di satu tempat.
+                Website ini membantu anda untuk mengelola produk yang ada di cafe anda.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link 
@@ -130,7 +129,7 @@ const LandingPage = () => {
           {isSeller ? (
             <>
               <h2 className="text-4xl font-extrabold mb-6">Siap Mengelola Produk?</h2>
-              <p className="text-xl mb-10 max-w-2xl mx-auto">Mulai kelola inventori Anda dan tingkatkan penjualan hari ini</p>
+              <p className="text-xl mb-10 max-w-2xl mx-auto">Tingkat penjualan hari ini</p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Link 
                   to="/seller/myproducts" 

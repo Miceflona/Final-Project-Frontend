@@ -44,6 +44,22 @@
       "role": "buyer",
       "avatar": "https://placehold.co/100",
       "address": "-"
+    },
+    {
+      "fullName": "Aulia",
+      "email": "mrshndaulia@gmail.com",
+      "address": "-",
+      "avatar": "data:image/webp;base64,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",
+      "password": "123",
+      "id": "user_1764083856578"
+    },
+    {
+      "fullName": "piere",
+      "email": "piere@gmail.com",
+      "address": "-",
+      "avatar": "https://th.bing.com/th/id/OIP.BEqYOyGsL_cKAw-Qb7G1ogHaLV?w=202&h=309&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
+      "password": "123",
+      "id": "user_1764085222154"
     }
   ],
   "products": [
@@ -94,6 +110,141 @@
       "image": "https://lowcarbyum.com/wp-content/uploads/2022/07/keto-caramel-macchiato-sq.jpg",
       "description": " espresso, steamed milk, sirup vanilla, saus caramel sebagai topping.",
       "id": "81d8"
+    },
+    {
+      "id": "prod_1764083944762",
+      "name": "Espresso Arabika",
+      "price": 25000,
+      "category": "coffee",
+      "image": "https://fugolcoffeeroasters.com/cdn/shop/files/295827B5-A673-42B0-AD3F-C537AB165589.jpg?v=1759036211&width=1445",
+      "description": "Espresso Arabika dengan rasa kuat dan aroma khas.\n",
+      "createdAt": "2025-11-25T15:19:04.762Z"
+    },
+    {
+      "id": "prod_1764083971481",
+      "name": "Cappuccino",
+      "price": 30000,
+      "category": "coffee",
+      "image": "https://www.acouplecooks.com/wp-content/uploads/2020/10/how-to-make-cappuccino-005.jpg",
+      "description": "Perpaduan espresso, susu, dan foam lembut.\n",
+      "createdAt": "2025-11-25T15:19:31.481Z"
+    },
+    {
+      "id": "prod_1764084003527",
+      "name": "Caffè Latte",
+      "price": 31999,
+      "category": "coffee",
+      "image": "https://gendhiscoffee.id/wp-content/uploads/2025/01/cafe-latte-1024x768.jpg",
+      "description": "Kopi susu creamy dengan rasa seimbang.\n",
+      "createdAt": "2025-11-25T15:20:03.527Z"
+    },
+    {
+      "id": "prod_1764084054311",
+      "name": "Americano",
+      "price": 20000,
+      "category": "coffee",
+      "image": "https://mocktail.net/wp-content/uploads/2022/03/homemade-Iced-Americano-recipe_1ig.jpg",
+      "description": " Espresso yang dicampur air, rasa ringan.\n",
+      "createdAt": "2025-11-25T15:20:54.311Z"
+    },
+    {
+      "id": "prod_1764084085567",
+      "name": "Mocha",
+      "price": 35000,
+      "category": "coffee",
+      "image": "https://www.folgerscoffee.com/folgers/recipes/_Hero%20Images/Detail%20Pages/5598/image-thumb__5598__schema_image/MochaIced-hero.58f3878d.jpg",
+      "description": "Kombinasi kopi dan cokelat yang manis.\n",
+      "createdAt": "2025-11-25T15:21:25.567Z"
+    },
+    {
+      "id": "prod_1764084126454",
+      "name": "Hazelnut Latte",
+      "price": 35999,
+      "category": "coffee",
+      "image": "https://tyberrymuch.com/wp-content/uploads/2024/03/Homemade-Hazelnut-Iced-Coffee.jpg",
+      "description": "Latte dengan rasa hazelnut premium.\n",
+      "createdAt": "2025-11-25T15:22:06.454Z"
+    },
+    {
+      "id": "prod_1764084176009",
+      "name": "Kopi Susu Gula Aren",
+      "price": 25000,
+      "category": "coffee",
+      "image": "https://asset.kompas.com/crops/EiIRBPZK28_qqbeh2eI5oQKoIS8=/0x0:1000x667/1200x800/data/photo/2024/02/24/65d8e2ad58d9e.jpg",
+      "description": "Campuran kopi susu dan gula aren khas Indonesia.\n",
+      "createdAt": "2025-11-25T15:22:56.009Z"
+    },
+    {
+      "id": "prod_1764084209410",
+      "name": "Chocolate Milk",
+      "price": 26999,
+      "category": "non-coffee",
+      "image": "https://www.organicvalley.coop/_next/image/?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2F5dqbssss%2Fproduction-v3%2F3ba3f137c02a6f320c156bb7c39e362bdbd87bb8-1356x1576.jpg&w=3840&q=75",
+      "description": "Susu cokelat manis dan lembut.\n",
+      "createdAt": "2025-11-25T15:23:29.410Z"
+    },
+    {
+      "id": "prod_1764084243990",
+      "name": "Red Velvet Latte",
+      "price": 30000,
+      "category": "non-coffee",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIW5JtYB3hTvs38GkX1-pCB8fot2vm_aLxgQ&s",
+      "description": "Minuman red velvet creamy penuh rasa.\n",
+      "createdAt": "2025-11-25T15:24:03.990Z"
+    },
+    {
+      "id": "prod_1764084272003",
+      "name": "Taro Latte",
+      "price": 29998,
+      "category": "non-coffee",
+      "image": "https://www.jagel.id/api/listimage/v/Taro-Latte-Iced-0-402612f0104c938a.jpg",
+      "description": "Minuman talas manis dengan aroma khas.\n",
+      "createdAt": "2025-11-25T15:24:32.003Z"
+    },
+    {
+      "id": "prod_1764084299631",
+      "name": "Strawberry Milk",
+      "price": 28000,
+      "category": "non-coffee",
+      "image": "https://www.ruparupa.com/blog/wp-content/uploads/2022/04/CA76F389-7A2B-44EC-8714-AD9DD1D3E864.jpeg",
+      "description": "Susu strawberry segar dan manis.\n\n",
+      "createdAt": "2025-11-25T15:24:59.631Z"
+    },
+    {
+      "id": "prod_1764084348169",
+      "name": "Mango Smoothie",
+      "price": 32000,
+      "category": "non-coffee",
+      "image": "https://www.worldofvegan.com/wp-content/uploads/2020/05/mango-banana-smoothie.jpg",
+      "description": "Smoothie mangga segar dan kental.\n",
+      "createdAt": "2025-11-25T15:25:48.169Z"
+    },
+    {
+      "id": "prod_1764084372911",
+      "name": "Lemon Tea",
+      "price": 18000,
+      "category": "coffee",
+      "image": "https://img-global.cpcdn.com/recipes/d5e9637d0a1c6e98/680x781cq80/iced-lemon-tea-ala-resto-foto-resep-utama.jpg",
+      "description": " Teh lemon segar cocok diminum dingin.\n",
+      "createdAt": "2025-11-25T15:26:12.911Z"
+    },
+    {
+      "id": "prod_1764084400689",
+      "name": "Thai Tea",
+      "price": 25000,
+      "category": "non-coffee",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8i89qRcM1w3Eb81gYPe-jwdvnn2p9AnFkVQ&s",
+      "description": "Thai Tea creamy dan harum.\n",
+      "createdAt": "2025-11-25T15:26:40.689Z"
+    },
+    {
+      "id": "prod_1764084425960",
+      "name": "Milk Tea Boba",
+      "price": 30000,
+      "category": "non-coffee",
+      "image": "https://thebetterboba.com/wp-content/themes/yootheme/cache/0e/Better-Boba-mango-e1683227515222-0e9d6cee.jpeg",
+      "description": "Milk tea dengan boba kenyal.\n",
+      "createdAt": "2025-11-25T15:27:05.960Z"
     }
   ],
   "cart": [
@@ -156,6 +307,93 @@
       "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
       "createdAt": "2025-11-25T09:04:35.818Z",
       "updatedAt": "2025-11-25T09:04:35.818Z"
+    },
+    {
+      "id": "order_1764084564654",
+      "userId": "user_1764083856578",
+      "items": [
+        {
+          "productId": "1",
+          "name": "Espresso Classico",
+          "price": 18000,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "name": "Vanilla Latte",
+          "price": 25000,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "name": "Matcha Zen Latte",
+          "price": 22000,
+          "quantity": 1
+        }
+      ],
+      "total": 65000,
+      "date": "2025-11-25T15:29:24.654Z",
+      "status": "pending",
+      "shippingDetails": {
+        "fullName": "Aulia",
+        "address": "Marshanda",
+        "phone": "0895414990"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T15:29:24.654Z",
+      "updatedAt": "2025-11-25T15:29:24.654Z"
+    },
+    {
+      "id": "order_1764084824855",
+      "userId": "user_1764083856578",
+      "items": [
+        {
+          "productId": "prod_1764084209410",
+          "name": "Chocolate Milk",
+          "price": 26999,
+          "quantity": 1
+        }
+      ],
+      "total": 26999,
+      "date": "2025-11-25T15:33:44.855Z",
+      "status": "pending",
+      "shippingDetails": {
+        "fullName": "Aulia",
+        "address": "-",
+        "phone": "0895414990"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T15:33:44.855Z",
+      "updatedAt": "2025-11-25T15:33:44.855Z"
+    },
+    {
+      "id": "order_1764085540513",
+      "userId": "user_1764085222154",
+      "items": [
+        {
+          "productId": "1",
+          "name": "Espresso Classico",
+          "price": 18000,
+          "quantity": 1
+        },
+        {
+          "productId": "2",
+          "name": "Vanilla Latte",
+          "price": 25000,
+          "quantity": 1
+        }
+      ],
+      "total": 43000,
+      "date": "2025-11-25T15:45:40.513Z",
+      "status": "pending",
+      "shippingDetails": {
+        "fullName": "piere",
+        "address": "-",
+        "phone": "0895414990"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T15:45:40.513Z",
+      "updatedAt": "2025-11-25T15:45:40.513Z"
     }
   ]
 }
