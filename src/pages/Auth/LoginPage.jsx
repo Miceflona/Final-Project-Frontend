@@ -28,56 +28,88 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-orange-50 px-4 mt-16">
-      <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center text-[#8B4513] mb-6">Login</h2>
-        
-        {error && <p className="bg-red-100 text-red-700 text-center p-3 rounded-lg mb-4">{error}</p>}
-        
-        <form onSubmit={handleLogin} className="space-y-6">
-          <div>
-            <label className="block text-gray-700 font-medium">Email</label>
-            <input 
-              type="email" 
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B4513]"
-              required
-              disabled={loading}
-            />
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 px-4 mt-16 relative overflow-hidden">
+      {/* Coffee Bean Decorations */}
+      <div className="absolute top-10 left-10 text-6xl opacity-10 animate-pulse">☕</div>
+      <div className="absolute bottom-20 right-20 text-8xl opacity-10 animate-pulse delay-700">☕</div>
+      <div className="absolute top-1/3 right-10 text-5xl opacity-10 animate-bounce">🫘</div>
+      
+      <div className="w-full max-w-md relative z-10">
+        {/* Coffee Cup Header */}
+        <div className="text-center mb-6">
+          <div className="inline-block bg-gradient-to-br from-amber-800 to-orange-900 p-4 rounded-full shadow-2xl mb-4 animate-bounce">
+            <span className="text-5xl">☕</span>
           </div>
-          <div>
-            <label className="block text-gray-700 font-medium">Password</label>
-            <input 
-              type="password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mt-2 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#8B4513]"
-              required
+          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-800 via-orange-700 to-red-700 mb-2">
+            AM-PM Coffee
+          </h1>
+          <p className="text-gray-600 font-medium">Masuk untuk menikmati kopi terbaik</p>
+        </div>
+
+        <div className="bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border-2 border-amber-200">
+          <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#8B4513] to-orange-600 mb-6">
+            Selamat Datang Kembali
+          </h2>
+          
+          {error && (
+            <div className="bg-gradient-to-r from-red-100 to-red-50 border-2 border-red-400 text-red-800 text-center p-4 rounded-xl mb-6 font-semibold shadow-lg animate-shake">
+              ⚠️ {error}
+            </div>
+          )}
+          
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div>
+              <label className="block text-gray-800 font-bold mb-2 flex items-center gap-2">
+                <span>📧</span> Email
+              </label>
+              <input 
+                type="email" 
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-5 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-300 focus:border-amber-500 transition-all bg-amber-50/50 font-medium"
+                placeholder="nama@email.com"
+                required
+                disabled={loading}
+              />
+            </div>
+            <div>
+              <label className="block text-gray-800 font-bold mb-2 flex items-center gap-2">
+                <span>🔒</span> Password
+              </label>
+              <input 
+                type="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-5 py-3 border-2 border-amber-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-300 focus:border-amber-500 transition-all bg-amber-50/50 font-medium"
+                placeholder="••••••••"
+                required
+                disabled={loading}
+              />
+            </div>
+            <button 
+              type="submit" 
+              className="w-full bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 text-white py-4 rounded-xl font-bold text-lg hover:from-amber-800 hover:via-orange-800 hover:to-red-800 transition-all transform hover:scale-105 hover:shadow-2xl disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:transform-none shadow-xl"
               disabled={loading}
-            />
+            >
+              {loading ? '⏳ Sedang masuk...' : '☕ Masuk Sekarang'}
+            </button>
+          </form>
+
+          <div className="mt-6 text-center">
+            <p className="text-gray-600 font-medium">
+              Belum punya akun?{' '}
+              <Link to="/register" className="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 to-orange-700 hover:from-amber-800 hover:to-orange-800 font-bold hover:underline transition-all">
+                Daftar Sekarang →
+              </Link>
+            </p>
           </div>
-          <button 
-            type="submit" 
-            className="w-full bg-[#8B4513] text-white py-3 rounded-lg font-semibold hover:bg-[#A0522D] transition-transform transform hover:scale-105 disabled:bg-gray-400 disabled:cursor-not-allowed"
-            disabled={loading}
-          >
-            {loading ? 'Logging in...' : 'Login'}
-          </button>
-        </form>
+        </div>
 
-        <p className="text-center text-gray-600 mt-4">
-          Belum punya akun?{' '}
-          <Link to="/register" className="text-[#8B4513] hover:underline font-semibold">
-            Daftar di sini
-          </Link>
-        </p>
-
-        {/* Demo credentials */}
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg text-sm">
-          <p className="font-semibold text-blue-900 mb-2">Demo Credentials:</p>
-          <p className="text-blue-800"><strong>Seller:</strong> test@toko.com / 123</p>
-          <p className="text-blue-800"><strong>Buyer:</strong> c@toko.com / 123</p>
+        {/* Coffee Quote */}
+        <div className="mt-6 text-center">
+          <p className="text-amber-800 font-semibold italic text-sm">
+            "Life begins after coffee" ☕
+          </p>
         </div>
       </div>
     </div>
