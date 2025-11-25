@@ -26,6 +26,15 @@
       "role": "seller",
       "avatar": "https://tse1.mm.bing.net/th/id/OIP.6oWaJdGi2oeU1vkqk--GoAHaLH?rs=1&pid=ImgDetMain&o=7&rm=3",
       "address": "Manado"
+    },
+    {
+      "id": "user_1764058064107",
+      "fullName": "michelle",
+      "email": "michellemiceflona@gmail.com",
+      "password": "123",
+      "role": "buyer",
+      "avatar": "https://placehold.co/100",
+      "address": "-"
     }
   ],
   "products": [
@@ -78,6 +87,19 @@
       "id": "81d8"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": "1",
+      "userId": "user_1",
+      "productId": "1",
+      "quantity": 2
+    },
+    {
+      "id": "2",
+      "userId": "user_1",
+      "productId": "2",
+      "quantity": 1
+    }
+  ],
   "orders": []
 }

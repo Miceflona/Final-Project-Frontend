@@ -1,20 +1,23 @@
 // src/pages/Auth/RegisterPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import { AuthContext } from '../../context/AuthContext';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
+  const { register } = useContext(AuthContext);
   
   // State untuk menampung input user
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    role: 'buyer'
   });
 
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // Handle perubahan input
   const handleChange = (e) => {
@@ -34,43 +37,32 @@ const RegisterPage = () => {
       return;
     }
 
+    if (formData.password.length < 3) {
+      setError('Password minimal 3 karakter');
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      // 2. Cek apakah email sudah terdaftar sebelumnya (GET)
-      const checkUser = await axios.get(`http://localhost:3000/users?email=${formData.email}`);
-      
-      if (checkUser.data.length > 0) {
-        setError('Email sudah terdaftar! Silakan gunakan email lain.');
-        return;
-      }
-
-      // 3. Siapkan data user baru
-      // Kita beri default role "seller" agar Anda bisa langsung tes halaman Dashboard
-      const newUser = {
-        fullName: formData.fullName,
-        email: formData.email,
-        password: formData.password,
-        role: "seller", 
-        avatar: "https://placehold.co/100", // Avatar default
-        address: "-"
-      };
-
-      // 4. Kirim ke Database (POST)
-      await axios.post('http://localhost:3000/users', newUser);
+      // 2. Panggil fungsi register dari AuthContext (POST)
+      await register(formData.fullName, formData.email, formData.password, formData.role);
 
       alert('Registrasi Berhasil! Silakan Login.');
       navigate('/login');
 
     } catch (err) {
-      console.error(err);
-      setError('Terjadi kesalahan saat registrasi.');
+      setError(err.message || 'Terjadi kesalahan saat registrasi.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-orange-50 py-10">
+    <div className="min-h-screen flex justify-center items-center bg-orange-50 py-10 px-4 mt-16">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-[#8B4513] mb-2">Join AM-PM Coffee</h2>
-        <p className="text-center text-gray-500 mb-6">Buat akun untuk mulai berjualan</p>
+        <p className="text-center text-gray-500 mb-6">Buat akun untuk mulai berbelanja atau berjualan</p>
         
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm text-center">
@@ -90,6 +82,7 @@ const RegisterPage = () => {
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-[#8B4513]"
               placeholder="Contoh: Budi Barista"
               required
+              disabled={loading}
             />
           </div>
 
@@ -104,6 +97,7 @@ const RegisterPage = () => {
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-[#8B4513]"
               placeholder="email@contoh.com"
               required
+              disabled={loading}
             />
           </div>
 
@@ -116,8 +110,9 @@ const RegisterPage = () => {
               value={formData.password}
               onChange={handleChange}
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-[#8B4513]"
-              placeholder="******"
+              placeholder="Minimal 3 karakter"
               required
+              disabled={loading}
             />
           </div>
 
@@ -132,14 +127,31 @@ const RegisterPage = () => {
               className="w-full px-4 py-2 border rounded focus:outline-none focus:border-[#8B4513]"
               placeholder="Ulangi password"
               required
+              disabled={loading}
             />
+          </div>
+
+          {/* Role Selection */}
+          <div>
+            <label className="block text-gray-700 text-sm font-bold mb-1">Tipe Akun</label>
+            <select
+              name="role"
+              value={formData.role}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border rounded focus:outline-none focus:border-[#8B4513]"
+              disabled={loading}
+            >
+              <option value="buyer">Pembeli</option>
+              <option value="seller">Penjual</option>
+            </select>
           </div>
 
           <button 
             type="submit" 
-            className="w-full bg-[#8B4513] text-white py-2 rounded hover:bg-[#A0522D] transition font-bold"
+            className="w-full bg-[#8B4513] text-white py-2 rounded hover:bg-[#A0522D] transition font-bold disabled:bg-gray-400 disabled:cursor-not-allowed"
+            disabled={loading}
           >
-            Daftar Sekarang
+            {loading ? 'Memproses...' : 'Daftar Sekarang'}
           </button>
         </form>
 

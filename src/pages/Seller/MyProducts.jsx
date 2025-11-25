@@ -1,98 +1,113 @@
 // src/pages/Seller/MyProducts.jsx
-import { useState, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ProductContext } from '../../context/ProductContext';
 
 export default function MyProducts() {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchProducts = () => {
-    fetch('http://localhost:3000/products')
-      .then(res => res.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
-      });
-  };
+  const { products, fetchProducts, deleteProduct, loading } = useContext(ProductContext);
+  const [confirmDelete, setConfirmDelete] = useState(null);
 
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  const handleDelete = (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
-      fetch(`http://localhost:3000/products/${id}`, {
-        method: 'DELETE'
-      })
-        .then(() => {
-          setProducts(products.filter(p => p.id !== id));
-        })
-        .catch(err => console.error('Delete failed:', err));
+  const handleDelete = async (id, name) => {
+    if (setConfirmDelete === id) {
+      try {
+        await deleteProduct(id);
+        alert(`Produk "${name}" berhasil dihapus`);
+        setConfirmDelete(null);
+      } catch (err) {
+        alert('Gagal menghapus produk: ' + err.message);
+      }
+    } else {
+      setConfirmDelete(id);
     }
   };
 
   if (loading) {
-    return <div className="p-8">Loading seller dashboard...</div>;
+    return <div className="p-8 text-center mt-16">Loading seller dashboard...</div>;
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold">My Products</h1>
+    <div className="max-w-6xl mx-auto p-6 mt-16">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">Produk Saya</h1>
         <Link
           to="/seller/add"
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700"
+          className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition font-semibold"
         >
-          + Add New Product
+          + Tambah Produk
         </Link>
       </div>
 
       {products.length === 0 ? (
-        <p>No products yet. Add your first product!</p>
+        <div className="text-center bg-white p-8 rounded-lg shadow">
+          <p className="text-gray-600 mb-4">Belum ada produk. Tambahkan produk pertama Anda!</p>
+          <Link
+            to="/seller/add"
+            className="inline-block bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+          >
+            Tambah Produk
+          </Link>
+        </div>
       ) : (
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border">
+        <div className="overflow-x-auto bg-white rounded-lg shadow">
+          <table className="min-w-full">
             <thead>
-              <tr className="bg-gray-100">
-                <th className="py-2 px-4 border">Image</th>
-                <th className="py-2 px-4 border">Name</th>
-                <th className="py-2 px-4 border">Category</th>
-                <th className="py-2 px-4 border">Price</th>
-                <th className="py-2 px-4 border">Actions</th>
+              <tr className="bg-gray-100 border-b">
+                <th className="py-3 px-4 text-left font-semibold">Gambar</th>
+                <th className="py-3 px-4 text-left font-semibold">Nama Produk</th>
+                <th className="py-3 px-4 text-left font-semibold">Kategori</th>
+                <th className="py-3 px-4 text-left font-semibold">Harga</th>
+                <th className="py-3 px-4 text-left font-semibold">Aksi</th>
               </tr>
             </thead>
             <tbody>
               {products.map(product => (
-                <tr key={product.id} className="text-center">
-                  <td className="py-2 px-4 border">
+                <tr key={product.id} className="border-b hover:bg-gray-50 transition">
+                  <td className="py-3 px-4">
                     <img
                       src={product.image || 'https://via.placeholder.com/50'}
                       alt={product.name}
-                      className="w-12 h-12 object-cover mx-auto rounded"
+                      className="w-16 h-16 object-cover rounded-lg"
                     />
                   </td>
-                  <td className="py-2 px-4 border">{product.name}</td>
-                  <td className="py-2 px-4 border">{product.category}</td>
-                  <td className="py-2 px-4 border">
-                    {new Intl.NumberFormat('id-ID', {
-                      style: 'currency',
-                      currency: 'IDR',
-                      minimumFractionDigits: 0
-                    }).format(product.price)}
+                  <td className="py-3 px-4">
+                    <p className="font-medium text-gray-800">{product.name}</p>
+                    <p className="text-sm text-gray-600 line-clamp-1">{product.description}</p>
                   </td>
-                  <td className="py-2 px-4 border space-x-2">
-                    <Link
-                      to={`/seller/edit/${product.id}`}
-                      className="text-blue-600 hover:underline"
-                    >
-                      Edit
-                    </Link>
-                    <button
-                      onClick={() => handleDelete(product.id)}
-                      className="text-red-600 hover:underline ml-2"
-                    >
-                      Delete
-                    </button>
+                  <td className="py-3 px-4">
+                    <span className={`px-3 py-1 rounded-full text-sm font-semibold ${
+                      product.category === 'coffee' 
+                        ? 'bg-amber-100 text-amber-800' 
+                        : 'bg-green-100 text-green-800'
+                    }`}>
+                      {product.category}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4 font-semibold text-orange-600">
+                    Rp {product.price.toLocaleString('id-ID')}
+                  </td>
+                  <td className="py-3 px-4">
+                    <div className="flex gap-2">
+                      <Link
+                        to={`/seller/edit/${product.id}`}
+                        className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-sm font-semibold"
+                      >
+                        Edit
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(product.id, product.name)}
+                        className={`px-3 py-1 rounded text-sm font-semibold transition ${
+                          confirmDelete === product.id
+                            ? 'bg-red-700 text-white'
+                            : 'bg-red-100 text-red-600 hover:bg-red-700 hover:text-white'
+                        }`}
+                      >
+                        {confirmDelete === product.id ? 'Yakin?' : 'Hapus'}
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
