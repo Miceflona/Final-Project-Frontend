@@ -48,7 +48,7 @@ const LoginPage = () => {
 
         <div className="bg-white/95 backdrop-blur-sm p-8 rounded-3xl shadow-2xl border-2 border-amber-200">
           <h2 className="text-3xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-[#8B4513] to-orange-600 mb-6">
-            Selamat Datang Kembali
+            Selamat Datang
           </h2>
           
           {error && (

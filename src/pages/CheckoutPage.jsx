@@ -171,7 +171,7 @@ const CheckoutPage = () => {
         <form onSubmit={handlePlaceOrder} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Shipping Details Form */}
           <div className="lg:col-span-2 bg-white p-8 rounded-xl shadow-lg">
-            <h2 className="text-2xl font-bold mb-6 text-gray-700">Informasi Pengiriman</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-700">Informasi Pembeli</h2>
             <div className="space-y-6">
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-600 mb-1">
@@ -186,20 +186,6 @@ const CheckoutPage = () => {
                   className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition"
                   required
                 />
-              </div>
-              <div>
-                <label htmlFor="address" className="block text-sm font-medium text-gray-600 mb-1">
-                  Alamat
-                </label>
-                <textarea
-                  name="address"
-                  id="address"
-                  value={shippingDetails.address}
-                  onChange={handleInputChange}
-                  rows="3"
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 transition"
-                  required
-                ></textarea>
               </div>
               <div>
                 <label htmlFor="phone" className="block text-sm font-medium text-gray-600 mb-1">
