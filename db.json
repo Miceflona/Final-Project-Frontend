@@ -60,6 +60,15 @@
       "avatar": "https://th.bing.com/th/id/OIP.BEqYOyGsL_cKAw-Qb7G1ogHaLV?w=202&h=309&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3",
       "password": "123",
       "id": "user_1764085222154"
+    },
+    {
+      "id": "user_1764114161752",
+      "fullName": "user11",
+      "email": "user11@gmail.com",
+      "password": "1234m",
+      "role": "buyer",
+      "avatar": "https://placehold.co/100",
+      "address": "-"
     }
   ],
   "products": [
@@ -394,6 +403,105 @@
       "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
       "createdAt": "2025-11-25T15:45:40.513Z",
       "updatedAt": "2025-11-25T15:45:40.513Z"
+    },
+    {
+      "id": "TRX-1764114312280-534",
+      "userId": "user_1764114161752",
+      "items": [
+        {
+          "productId": "prod_1764084348169",
+          "name": "Mango Smoothie",
+          "price": 32000,
+          "quantity": 1
+        },
+        {
+          "productId": "prod_1764084372911",
+          "name": "Lemon Tea",
+          "price": 18000,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 50000,
+      "shippingCost": 10000,
+      "total": 60000,
+      "date": "2025-11-25T23:45:12.280Z",
+      "status": "pending",
+      "orderType": "delivery",
+      "shippingDetails": {
+        "fullName": "user11",
+        "address": "11",
+        "phone": "092123513352",
+        "locationType": "Delivery Address"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T23:45:12.280Z",
+      "updatedAt": "2025-11-25T23:45:12.280Z"
+    },
+    {
+      "id": "TRX-1764114627496-321",
+      "userId": "user_1764114161752",
+      "items": [
+        {
+          "productId": "81d8",
+          "name": "Caramel Macchiato",
+          "price": 27000,
+          "quantity": 1
+        },
+        {
+          "productId": "prod_1764083944762",
+          "name": "Espresso Arabika",
+          "price": 25000,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 52000,
+      "shippingCost": 10000,
+      "total": 62000,
+      "date": "2025-11-25T23:50:27.496Z",
+      "status": "pending",
+      "orderType": "delivery",
+      "shippingDetails": {
+        "fullName": "user11",
+        "address": "dfnkj",
+        "phone": "6246151",
+        "locationType": "Delivery Address"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T23:50:27.496Z",
+      "updatedAt": "2025-11-25T23:50:27.496Z"
+    },
+    {
+      "id": "TRX-1764114703094-188",
+      "userId": "user_1764114161752",
+      "items": [
+        {
+          "productId": "2",
+          "name": "Vanilla Latte",
+          "price": 25000,
+          "quantity": 1
+        },
+        {
+          "productId": "3",
+          "name": "Matcha Zen Latte",
+          "price": 22000,
+          "quantity": 1
+        }
+      ],
+      "subtotal": 47000,
+      "shippingCost": 0,
+      "total": 47000,
+      "date": "2025-11-25T23:51:43.094Z",
+      "status": "pending",
+      "orderType": "dine-in",
+      "shippingDetails": {
+        "fullName": "user11",
+        "address": "bskjdb",
+        "phone": "1213214",
+        "locationType": "Table Number"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T23:51:43.094Z",
+      "updatedAt": "2025-11-25T23:51:43.094Z"
     }
   ]
 }

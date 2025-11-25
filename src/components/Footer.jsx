@@ -63,7 +63,7 @@ const Footer = () => {
             <ul className="space-y-3 text-gray-300 text-sm">
               <li className="flex items-start gap-3 hover:text-amber-400 transition-colors">
                 <span className="text-xl">📍</span>
-                <span>Jl. Sudirman No. 123,<br/>Jakarta Pusat 10110</span>
+                <span>Jl. Manado-Bitung,<br/>Airmadidi, Sulawesi Utara</span>
               </li>
               <li className="flex items-center gap-3 hover:text-amber-400 transition-colors">
                 <span className="text-xl">📱</span>
@@ -71,7 +71,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 hover:text-amber-400 transition-colors">
                 <span className="text-xl">✉️</span>
-                <span>hello@ampmcoffee.com</span>
+                <span>ampmfriend@gmail.com</span>
               </li>
               <li className="flex items-center gap-3 hover:text-amber-400 transition-colors">
                 <span className="text-xl">🕐</span>
