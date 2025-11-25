@@ -24,6 +24,7 @@ const CheckoutPage = () => {
   });
 
   const [cartDetails, setCartDetails] = useState([]);
+  const [paymentProofFile, setPaymentProofFile] = useState(null);
 
   // Fetch cart items saat component mount
   useEffect(() => {
@@ -73,6 +74,10 @@ const CheckoutPage = () => {
     setShippingDetails(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleFileChange = (e) => {
+    setPaymentProofFile(e.target.files[0]);
+  };
+
   const calculateTotal = () => {
     return cartDetails.reduce((sum, item) => sum + item.subtotal, 0);
   };
@@ -89,10 +94,19 @@ const CheckoutPage = () => {
       alert('Lengkapi semua data pengiriman');
       return;
     }
+    
+    if (!paymentProofFile) {
+      alert('Mohon unggah bukti pembayaran');
+      return;
+    }
 
     setIsPlacingOrder(true);
 
     try {
+      // Simulate file upload, in a real app, you would upload to a server
+      // and get a URL back. Here we'll just use a placeholder.
+      const paymentProofUrl = `https://placehold.co/600x400.png?text=Bukti+Pembayaran`;
+
       const orderData = {
         userId: user.id,
         items: cartDetails.map(item => ({
@@ -101,10 +115,11 @@ const CheckoutPage = () => {
           price: item.product.price,
           quantity: item.quantity
         })),
-        totalAmount: calculateTotal(),
-        orderDate: new Date().toISOString(),
+        total: calculateTotal(),
+        date: new Date().toISOString(),
         status: 'pending',
-        shippingDetails: shippingDetails
+        shippingDetails: shippingDetails,
+        paymentProof: paymentProofUrl, // Add the proof URL
       };
 
       // POST - Create order
@@ -113,8 +128,8 @@ const CheckoutPage = () => {
       // DELETE - Clear cart after order
       await clearCart(user.id);
 
-      alert('Pesanan berhasil dibuat!');
-      navigate('/my-orders');
+      alert('Pesanan berhasil dibuat! Anda akan dialihkan ke halaman Laporan Transaksi.');
+      navigate('/transaction-report');
     } catch (err) {
       setError('Gagal membuat pesanan: ' + err.message);
     } finally {
@@ -233,6 +248,24 @@ const CheckoutPage = () => {
                   <span className="text-orange-600">Rp {calculateTotal().toLocaleString('id-ID')}</span>
                 </div>
               </div>
+
+              {/* Payment Proof Upload */}
+              <div className="mt-6 border-t pt-4">
+                <label htmlFor="paymentProof" className="block text-sm font-medium text-gray-600 mb-2">
+                  Unggah Bukti Pembayaran
+                </label>
+                <input
+                  type="file"
+                  name="paymentProof"
+                  id="paymentProof"
+                  onChange={handleFileChange}
+                  className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-orange-50 file:text-orange-700 hover:file:bg-orange-100"
+                  accept="image/png, image/jpeg, image/jpg"
+                  required
+                />
+                {paymentProofFile && <p className="text-xs text-gray-500 mt-1">File: {paymentProofFile.name}</p>}
+              </div>
+              
               <button
                 type="submit"
                 disabled={cartDetails.length === 0 || isPlacingOrder}

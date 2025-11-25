@@ -35,6 +35,15 @@
       "role": "buyer",
       "avatar": "https://placehold.co/100",
       "address": "-"
+    },
+    {
+      "id": "user_1764061311053",
+      "fullName": "flona",
+      "email": "flona@gmail.com",
+      "password": "123",
+      "role": "buyer",
+      "avatar": "https://placehold.co/100",
+      "address": "-"
     }
   ],
   "products": [
@@ -101,5 +110,52 @@
       "quantity": 1
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": "order_1764061425444",
+      "userId": "user_1764061311053",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Oreo shake",
+          "price": 25000,
+          "quantity": 1
+        }
+      ],
+      "total": 25000,
+      "date": "2025-11-25T09:03:45.443Z",
+      "status": "pending",
+      "shippingDetails": {
+        "fullName": "flona",
+        "address": "airmadidi",
+        "phone": "082123513352"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T09:03:45.444Z",
+      "updatedAt": "2025-11-25T09:03:45.444Z"
+    },
+    {
+      "id": "order_1764061475818",
+      "userId": "user_1764061311053",
+      "items": [
+        {
+          "productId": "4",
+          "name": "Oreo shake",
+          "price": 25000,
+          "quantity": 1
+        }
+      ],
+      "total": 25000,
+      "date": "2025-11-25T09:04:35.818Z",
+      "status": "pending",
+      "shippingDetails": {
+        "fullName": "flona",
+        "address": "airmadidi",
+        "phone": "082123513352"
+      },
+      "paymentProof": "https://placehold.co/600x400.png?text=Bukti+Pembayaran",
+      "createdAt": "2025-11-25T09:04:35.818Z",
+      "updatedAt": "2025-11-25T09:04:35.818Z"
+    }
+  ]
 }
