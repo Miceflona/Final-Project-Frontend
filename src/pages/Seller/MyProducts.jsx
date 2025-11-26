@@ -12,7 +12,7 @@ export default function MyProducts() {
   }, []);
 
   const handleDelete = async (id, name) => {
-    if (setConfirmDelete === id) {
+    if (confirmDelete === id) {
       try {
         await deleteProduct(id);
         alert(`Produk "${name}" berhasil dihapus`);

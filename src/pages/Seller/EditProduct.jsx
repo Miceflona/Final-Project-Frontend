@@ -45,6 +45,13 @@ export default function EditProduct() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Khusus harga: normalisasi input agar akurat dalam Rupiah (tanpa titik/koma)
+    if (name === 'price') {
+      // Hapus semua karakter non-digit (termasuk titik/koma pemisah ribuan/desimal)
+      const digitsOnly = value.replace(/[^0-9]/g, '');
+      setFormData({ ...formData, price: digitsOnly });
+      return;
+    }
     setFormData({ ...formData, [name]: value });
   };
 
@@ -129,14 +136,14 @@ export default function EditProduct() {
         <div>
           <label className="block text-sm font-bold mb-2 text-gray-700">Harga (Rp) *</label>
           <input
-            type="number"
+            type="text"
             name="price"
             value={formData.price}
             onChange={handleChange}
             className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:outline-none"
-            min="1"
             required
           />
+          <p className="text-xs text-gray-500 mt-1">Masukkan angka tanpa titik/koma. Contoh: 25000</p>
         </div>
 
         {/* Image URL */}
